@@ -1,30 +1,66 @@
-#include "Keeper.hpp"
+#pragma once
+#ifndef LIST_HPP
+#define LIST_HPP
+
+#include <fstream>
 #include <iostream>
 
 template <class Type>
-bool Keeper<Type>::correct_index(int index) {
+struct Item {
+	Type data;
+	Item<Type>* next{ nullptr }, * prev{ nullptr };
+};
+
+template <class Type>
+class List {
+private:
+	Item<Type>* m_beg{ nullptr }, * m_end{ nullptr };
+	int m_size{ 0 };
+	bool correct_index(int index);
+	Item<Type>* move(int index);
+
+public:
+	List() {};
+	~List() { clear(); };
+
+	int size() const;
+	bool is_empty() const;
+
+	void add_end(Type data);
+	void add_begin(Type data);
+
+	Type get(int index);
+	void set(Type data, int index);
+	void insert();
+
+	void erase(int index);
+	void clear();
+};
+
+template <class Type>
+bool List<Type>::correct_index(int index) {
 	return index < 0 || index >= m_size;
 }
 template <class Type>
-Item<Type>* Keeper<Type>::move(int index) {
-	bool is_begin = index < (m_size - 1) / 2;
+Item<Type>* List<Type>::move(int index) {
+	bool is_begin = index < m_size / 2;
 	Item<Type>* ptr = is_begin ? m_beg : m_end;
-	for (size_t i = 0; i <= is_begin ? index : m_size - index; i++)
+	for (size_t i = 0; i < is_begin ? index : m_size - index; i++)
 		ptr = is_begin ? ptr->next : ptr->prev;
 	return ptr;
 }
 
 template <class Type>
-bool Keeper<Type>::is_empty() const {
+bool List<Type>::is_empty() const {
 	return !m_size;
 }
 template <class Type>
-int Keeper<Type>::size() const {
+int List<Type>::size() const {
 	return m_size;
 }
 
 template <class Type>
-void Keeper<Type>::add_end(Type data) {
+void List<Type>::add_end(Type data) {
 	try {
 		Item<Type>* temp = new Item<Type>;
 		temp->data = data;
@@ -42,7 +78,7 @@ void Keeper<Type>::add_end(Type data) {
 	}
 }
 template <class Type>
-void Keeper<Type>::add_begin(Type data) {
+void List<Type>::add_begin(Type data) {
 	try {
 		Item<Type>* temp = new Item<Type>;
 		temp->data = data;
@@ -61,20 +97,20 @@ void Keeper<Type>::add_begin(Type data) {
 }
 
 template <class Type>
-Type Keeper<Type>::get(int index) const {
+Type List<Type>::get(int index) {
 	if (!correct_index(index))
 		throw new std::exception("");
 	return move(index)->data;
 }
 template <class Type>
-void Keeper<Type>::set(Type data, int index) {
+void List<Type>::set(Type data, int index) {
 	if (!correct_index(index))
 		throw new std::exception("");
 	move(index)->data = data;
 }
 
 template <class Type>
-void Keeper<Type>::erase(int index) {
+void List<Type>::erase(int index) {
 	if (!correct_index(index))
 		throw new std::exception("");
 	Item<Type>* temp = move(index);
@@ -83,7 +119,7 @@ void Keeper<Type>::erase(int index) {
 	delete temp;
 }
 template <class Type>
-void Keeper<Type>::clear() {
+void List<Type>::clear() {
 	Item<Type>* temp;
 	while (m_beg != nullptr) {
 		temp = m_beg;
@@ -92,3 +128,5 @@ void Keeper<Type>::clear() {
 	}
 	m_end = nullptr;
 }
+
+#endif //LIST_HPP
