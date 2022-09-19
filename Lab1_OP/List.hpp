@@ -39,13 +39,13 @@ public:
 
 template <class Type>
 bool List<Type>::correct_index(int index) {
-	return index < 0 || index >= m_size;
+	return 0 <= index && index < m_size;
 }
 template <class Type>
 Item<Type>* List<Type>::move(int index) {
-	bool is_begin = index < m_size / 2;
+	bool is_begin = index <= m_size / 2;
 	Item<Type>* ptr = is_begin ? m_beg : m_end;
-	for (size_t i = 0; i < is_begin ? index : m_size - index; i++)
+	for (size_t i = 0; i < (is_begin ? index : m_size - index - 1); i++)
 		ptr = is_begin ? ptr->next : ptr->prev;
 	return ptr;
 }
@@ -100,7 +100,8 @@ template <class Type>
 Type List<Type>::get(int index) {
 	if (!correct_index(index))
 		throw new std::exception("");
-	return move(index)->data;
+	Item<Type>* ptr = move(index);
+	return ptr->data;
 }
 template <class Type>
 void List<Type>::set(Type data, int index) {

@@ -142,7 +142,13 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Administration.hpp" />
+    <ClInclude Include="Conference.hpp" />
+    <ClInclude Include="CorrectInput.hpp" />
+    <ClInclude Include="Keeper.hpp" />
     <ClInclude Include="List.hpp" />
+    <ClInclude Include="Programme.hpp" />
+    <ClInclude Include="Speaker.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
