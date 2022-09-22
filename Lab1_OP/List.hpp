@@ -2,7 +2,6 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include <fstream>
 #include <iostream>
 
 template <class Type>
@@ -13,7 +12,7 @@ struct Item {
 
 template <class Type>
 class List {
-private:
+protected:
 	Item<Type>* m_beg{ nullptr }, * m_end{ nullptr };
 	int m_size{ 0 };
 	bool correct_index(int index);
@@ -28,10 +27,10 @@ public:
 
 	void add_end(Type data);
 	void add_begin(Type data);
+	void insert(int index, Type data);
 
 	Type get(int index);
 	void set(Type data, int index);
-	void insert();
 
 	void erase(int index);
 	void clear();
@@ -95,13 +94,30 @@ void List<Type>::add_begin(Type data) {
 		std::cout << "Error: " << error.what() << std::endl;
 	}
 }
+template <class Type>
+void List<Type>::insert(int index, Type data) {
+	if (is_empty() || !correct_index(index))
+		throw new std::exception("");
+	try {
+		Item<Type>* where = move(index);
+		Item<Type>* temp = new Item<Type>;
+		temp->data = data;
+		temp->next = where;
+		temp->prev = where->prev;
+		(where->prev)->next = temp;
+		where->prev = temp;
+		m_size++;
+	}
+	catch (const std::bad_alloc& error) {
+		std::cout << "Error: " << error.what() << std::endl;
+	}
+}
 
 template <class Type>
 Type List<Type>::get(int index) {
 	if (!correct_index(index))
 		throw new std::exception("");
-	Item<Type>* ptr = move(index);
-	return ptr->data;
+	return move(index)->data;
 }
 template <class Type>
 void List<Type>::set(Type data, int index) {

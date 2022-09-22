@@ -2,10 +2,13 @@
 #ifndef CONFERENCE_HPP
 #define CONFERENCE_HPP
 
+#include <string>
+
 class Conference {
-	virtual void show() = 0;
-	virtual Conference* get() = 0;
-	virtual void set(Conference*) = 0;
+public:
+	virtual void print() = 0;
+	virtual std::string save() = 0;
+	virtual void load(std::string) = 0;
 };
 
 #endif //CONFERENCE_HPP

@@ -12,7 +12,7 @@ Type correct_input() {
     while (std::cin.fail()) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Неверный ввод! Введите правильное значение" << std::endl;
+        std::cout << "Incorrect input! Enter the correct value" << std::endl;
         std::cin >> temp;
     }
     return temp;
@@ -25,7 +25,7 @@ Type correct_input(Type left, Type right) {
     while (std::cin.fail() || temp < left || temp > right) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Неверный ввод! Введите правильное значение" << std::endl;
+        std::cout << "Incorrect input! Enter the correct value" << std::endl;
         std::cin >> temp;
     }
     return temp;
