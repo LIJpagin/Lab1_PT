@@ -65,15 +65,12 @@ public:
 		print();
 		system("pause");
 	}
-	void print() {
-		cout << "Administration" << endl;
-		cout << "\tFull name: " << last_name << " " << first_name << " " << patronymic << endl;
-		cout << "\tPosition: " << position << endl;
-		cout << "\tArea responsibility: " << area_responsibility << endl << endl;
-	}
-	string save() {
-		return "administration/" + last_name + "/" + first_name + "/" + patronymic
-			+ "/" + position + "/" + area_responsibility;
+	string print() {
+		return "Class: Administration\nLast name: " + last_name +
+			"\nFirst name: " + first_name +
+			"\nPatronymic: " + patronymic +
+			"\nPosition: " + position +
+			"\nArea responsibility: " + area_responsibility + "\n";
 	}
 	void load(string in) {
 

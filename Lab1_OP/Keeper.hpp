@@ -15,20 +15,20 @@ public:
 	void print() {
 		Item<Conference*>* temp = m_beg;
 		while (temp != nullptr) {
-			temp->data->print();
+			std::cout << temp->data->print() << std::endl;
 			temp = temp->next;
 		}
 	};
 	void print(int index) {
 		if (!correct_index(index))
 			throw new std::exception("");
-		move(index)->data->print();
+		std::cout << move(index)->data->print() << std::endl;
 	}
 	void save(std::string path) {
 		std::ofstream file(path);
 		Item<Conference*>* temp = m_beg;
 		while (temp) {
-			file << temp->data->save() << std::endl;
+			file << temp->data->print() << std::endl;
 			temp = temp->next;
 		}
 		file.close();
@@ -36,7 +36,7 @@ public:
 	void load(std::string path) {
 		std::ifstream file(path);
 		if (!file.is_open())
-			cout << "Unable to open the file\n";
+			std::cout << "Unable to open the file\n";
 		std::string temp;
 		while (getline(file, temp)) {
 			

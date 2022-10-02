@@ -72,16 +72,13 @@ public:
 		print();
 		system("pause");
 	}
-	void print() {
-		cout << "Speaker" << endl;
-		cout << "\tFull name: " << last_name << " " << first_name << " " << patronymic << endl;
-		cout << "\tOrganization: " << organization << endl;
-		cout << "\tReport: " << report << endl;
-		cout << "\tAbstract report: " << abstract_report << endl << endl;
-	}
-	string save() {
-		return "speaker/" + last_name + "/" + first_name + "/" + patronymic
-			+ "/"+ organization + "/" + report + "/" + abstract_report;
+	string print() {
+		return "Class: Speaker\nLast name: " + last_name +
+			"\nFirst name: " + first_name +
+			"\nPatronymic: " + patronymic +
+			"\nOrganization: " + organization +
+			"\nReport: " + report +
+			"\nAbstract report: " + abstract_report + "\n";
 	}
 	void load(string in) {
 

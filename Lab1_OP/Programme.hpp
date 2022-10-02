@@ -69,18 +69,15 @@ public:
 		print();
 		system("pause");
 	}
-	void print() {
-		cout << "Programme" << endl;
-		cout << "\tName: " << name << endl;
-		cout << "\tDate: " << (day < 10 ? "0" : "") << day << "."
-			<< (month < 10 ? "0" : "") << month << "." << year << endl;
-		cout << "\tTime: " << (hour < 10 ? "0" : "") << hour << ":"
-			<< (minute < 10 ? "0" : "") << minute << endl << endl;
-	}
-	string save() {
-		return "programme/" + name + "/" + std::to_string(day) + "/"
-			+ std::to_string(year) + "/" + std::to_string(hour) + "/"
-			+ std::to_string(minute);
+	string print() {
+		return "Class: Programme\nName: " + name +
+			"\nDate: " +
+			(day < 10 ? "0" : "") + std::to_string(day) + "." +
+			(month < 10 ? "0" : "") + std::to_string(month) + "." +
+			std::to_string(year) + "\n" +
+			"Time: " +
+			(hour < 10 ? "0" : "") + std::to_string(hour) + "." +
+			(minute < 10 ? "0" : "") + std::to_string(minute) + "\n";
 	}
 	void load(string in) {
 
