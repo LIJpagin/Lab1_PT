@@ -11,6 +11,7 @@
 
 class Keeper : public List<Conference*> {
 public:
+	friend List;
 	void print() {
 		Item<Conference*>* temp = m_beg;
 		while (temp != nullptr) {
@@ -34,8 +35,9 @@ public:
 	}
 	void load(std::string path) {
 		std::ifstream file(path);
+		if (!file.is_open())
+			cout << "Unable to open the file\n";
 		std::string temp;
-		clear();
 		while (getline(file, temp)) {
 			
 		}

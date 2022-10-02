@@ -3,28 +3,79 @@
 #define ADMINISTRATION_HPP
 
 #include "Conference.hpp"
+#include "CorrectInput.hpp"
+#include "Menu.hpp"
 
 #include <string>
+#include <iostream>
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 class Administration : public Conference {
-public:
+private:
 	std::string last_name;
 	std::string first_name;
 	std::string patronymic;
 	std::string position;
 	std::string area_responsibility;
 
-	void print() {
-		std::cout << "Administration" << std::endl;
-		std::cout << "Full name: " << last_name << " " << first_name << " " << patronymic << std::endl;
-		std::cout << "Position: " << position << std::endl;
-		std::cout << "Area responsibility: " << area_responsibility << std::endl << std::endl;
+public:
+	void create() {
+		string field;
+		cout << "Last name: "; cin >> field;
+		last_name = field;
+		cout << "First name: "; cin >> field;
+		first_name = field;
+		cout << "Patronymic: "; cin >> field;
+		patronymic = field;
+		cout << "Position: "; cin >> field;
+		position = field;
+		cout << "Area responsibility: "; cin >> field;
+		area_responsibility = field;
 	}
-	std::string save() {
+	void edit() {
+		print();
+		string items[] = {
+			"Select the option to change",
+			"Last name",
+			"First name",
+			"Position",
+			"Area responsibility",
+			"Back" };
+		string choice = menu(items, 6);
+		system("cls");
+		if (choice == items[5])
+			return;
+		print();
+		cout << "Enter new value\n>>> ";
+		string value; cin >> value;
+		if (choice == items[1])
+			last_name = value;
+		else if (choice == items[2])
+			first_name = value;
+		else if (choice == items[3])
+			patronymic = value;
+		else if (choice == items[4])
+			position = value;
+		else if (choice == items[5])
+			area_responsibility = value;
+		print();
+		system("pause");
+	}
+	void print() {
+		cout << "Administration" << endl;
+		cout << "\tFull name: " << last_name << " " << first_name << " " << patronymic << endl;
+		cout << "\tPosition: " << position << endl;
+		cout << "\tArea responsibility: " << area_responsibility << endl << endl;
+	}
+	string save() {
 		return "administration/" + last_name + "/" + first_name + "/" + patronymic
 			+ "/" + position + "/" + area_responsibility;
 	}
-	void load(std::string in) {
+	void load(string in) {
 
 	}
 };

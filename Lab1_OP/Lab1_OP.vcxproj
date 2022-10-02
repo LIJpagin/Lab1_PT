@@ -147,6 +147,7 @@
     <ClInclude Include="CorrectInput.hpp" />
     <ClInclude Include="Keeper.hpp" />
     <ClInclude Include="List.hpp" />
+    <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Programme.hpp" />
     <ClInclude Include="Speaker.hpp" />
   </ItemGroup>

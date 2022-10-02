@@ -133,6 +133,7 @@ void List<Type>::erase(int index) {
 	Item<Type>* temp = move(index);
 	(temp->next)->prev = temp->prev;
 	(temp->prev)->next = temp->next;
+	m_size--;
 	delete temp;
 }
 template <class Type>
