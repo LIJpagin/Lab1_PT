@@ -24,6 +24,53 @@ private:
 	string abstract_report;
 
 public:
+	Speaker() {
+		cout << "The constructor without parameters of the class Speaker is called" << endl;
+	}
+	Speaker(const string& last_name_, const string& first_name_, const string& patronymic_,
+		const string& organization_, const string& report_, const string& abstract_report_)
+	{
+		cout << "The constructor with the parameters of the class Speaker is called" << endl;
+		last_name = last_name_;
+		first_name = first_name_;
+		patronymic = patronymic_;
+		organization = organization_;
+		report = report_;
+		abstract_report = abstract_report_;
+	}
+	Speaker(const Speaker& that) {
+		cout << "The copy constructor of the class Speaker is called" << endl;
+		last_name = that.last_name;
+		first_name = that.first_name;
+		patronymic = that.patronymic;
+		organization = that.organization;
+		report = that.report;
+		abstract_report = that.abstract_report;
+	}
+	~Speaker() {
+		cout << "The deconstructor of the class Speaker is called" << endl;
+	}
+
+	void set_full_name(const string& last_name_, const string& first_name_, const string& patronymic_) {
+		last_name = last_name_;
+		first_name = first_name_;
+		patronymic = patronymic_;
+	}
+	void set_organization(const string& organization_) {
+		organization = organization_;
+	}
+	void set_report_and_abstract(const string& report_, const string& abstract_report_) {
+		report = report_;
+		abstract_report = abstract_report_;
+	}
+
+	string get_last_name() const { return last_name; }
+	string get_first_name() const { return first_name; }
+	string get_patronymic() const { return patronymic; }
+	string get_organization() const { return organization; }
+	string get_report() const { return report; }
+	string get_abstract_report() const { return abstract_report; }
+
 	void create() {
 		string field;
 		cout << "Last name: "; cin >> field;
@@ -79,9 +126,6 @@ public:
 			"\nOrganization: " + organization +
 			"\nReport: " + report +
 			"\nAbstract report: " + abstract_report + "\n";
-	}
-	void load(string in) {
-
 	}
 };
 

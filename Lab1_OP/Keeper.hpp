@@ -8,6 +8,8 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <cctype>
+#include <algorithm>
 
 class Keeper : public List<Conference*> {
 public:
@@ -28,18 +30,26 @@ public:
 		std::ofstream file(path);
 		Item<Conference*>* temp = m_beg;
 		while (temp) {
-			file << temp->data->print() << std::endl;
+			file << temp->data->print();
 			temp = temp->next;
 		}
 		file.close();
 	}
 	void load(std::string path) {
 		std::ifstream file(path);
-		if (!file.is_open())
+		if (!file.is_open()) {
 			std::cout << "Unable to open the file\n";
+			return;
+		}
 		std::string temp;
 		while (getline(file, temp)) {
-			
+			size_t separator = temp.find(":");
+			if (separator != std::string::npos)
+				continue;
+			std::transform(temp.begin(), temp.begin() + separator, temp.begin(), tolower);//TODO заменить
+			if (temp.substr(0, separator) == "speaker") {
+
+			}
 		}
 		file.close();
 	}
