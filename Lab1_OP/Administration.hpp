@@ -20,21 +20,21 @@ private:
 	std::string first_name;
 	std::string patronymic;
 	std::string position;
-	std::string area_responsibility;
+	std::string responsibility;
 
 public:
 	Administration() {
 		cout << "The constructor without parameters of the class Administration is called" << endl;
 	}
 	Administration(const string& last_name_, const string& first_name_, const string& patronymic_,
-		const string& position_, const string& area_responsibility_)
+		const string& position_, const string& responsibility_)
 	{
 		cout << "The constructor with the parameters of the class Administration is called" << endl;
 		last_name = last_name_;
 		first_name = first_name_;
 		patronymic = patronymic_;
 		position = position_;
-		area_responsibility = area_responsibility_;
+		responsibility = responsibility_;
 	}
 	Administration(const Administration& that) {
 		cout << "The copy constructor of the class Administration is called" << endl;
@@ -42,7 +42,7 @@ public:
 		first_name = that.first_name;
 		patronymic = that.patronymic;
 		position = that.position;
-		area_responsibility = that.area_responsibility;
+		responsibility = that.responsibility;
 	}
 	~Administration() {
 		cout << "The deconstructor of the class Administration is called" << endl;
@@ -52,28 +52,27 @@ public:
 	void set_first_name(const string& first_name_) { first_name = first_name_; }
 	void set_patronymic(const string& patronymic_) { patronymic = patronymic_; }
 	void set_position(const string& position_) { position = position_; }
-	void set_area_responsibility(const string& area_responsibility_) {
-		area_responsibility = area_responsibility_;
+	void set_responsibility(const string& responsibility_) {
+		responsibility = responsibility_;
 	}
 
 	string get_last_name() const { return last_name; }
 	string get_first_name() const { return first_name; }
 	string get_patronymic() const { return patronymic; }
 	string get_position() const { return position; }
-	string get_area_responsibility() const { return area_responsibility; }
+	string get_responsibility() const { return responsibility; }
 
 	void create() {
 		string field;
 		cout << "Last name: ";
-		cin >> last_name;
-		cout << "First name: ";
-		cin >> first_name;
-		cout << "Patronymic: ";
-		cin >> patronymic;
+		cin >> last_name >> first_name >> patronymic;
+		cin.ignore();
 		cout << "Position: ";
-		cin >> position;
-		cout << "Area responsibility: ";
-		cin >> area_responsibility;
+		getline(cin, position);
+		trim(position);
+		cout << "Responsibility: ";
+		getline(cin, responsibility);
+		trim(responsibility);
 	}
 	void edit() {
 		print();
@@ -82,7 +81,7 @@ public:
 			"Last name",
 			"First name",
 			"Position",
-			"Area responsibility",
+			"Responsibility",
 			"Back" };
 		string choice = menu(items, 6);
 		system("cls");
@@ -97,15 +96,15 @@ public:
 		else if (choice == items[3])
 			cin >> patronymic;
 		else if (choice == items[4])
-			cin >> position;
+			getline(cin, position), trim(position);
 		else if (choice == items[5])
-			cin >> area_responsibility;
+			getline(cin, responsibility), trim(responsibility); 
 		print();
 		system("pause");
 	}
 	string print() {
-		return "Class: Administration\nFull name: " + last_name + " " + first_name + " " + patronymic +
-			"\nPosition: " + position + "\nArea responsibility: " + area_responsibility + "\n";
+		return "Class: Administration\nFull-name: " + last_name + " " + first_name + " " + patronymic +
+			"\nPosition: " + position + "\nResponsibility: " + responsibility + "\n";
 	}
 };
 

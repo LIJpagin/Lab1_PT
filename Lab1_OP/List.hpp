@@ -145,6 +145,7 @@ void List<Type>::clear() {
 		delete temp;
 	}
 	m_end = nullptr;
+	m_size = 0;
 }
 
 #endif //LIST_HPP

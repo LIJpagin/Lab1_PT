@@ -21,14 +21,14 @@ private:
 	string patronymic;
 	string organization;
 	string report;
-	string abstract_report;
+	string abstract;
 
 public:
 	Speaker() {
 		cout << "The constructor without parameters of the class Speaker is called" << endl;
 	}
 	Speaker(const string& last_name_, const string& first_name_, const string& patronymic_,
-		const string& organization_, const string& report_, const string& abstract_report_)
+		const string& organization_, const string& report_, const string& abstract_)
 	{
 		cout << "The constructor with the parameters of the class Speaker is called" << endl;
 		last_name = last_name_;
@@ -36,7 +36,7 @@ public:
 		patronymic = patronymic_;
 		organization = organization_;
 		report = report_;
-		abstract_report = abstract_report_;
+		abstract = abstract_;
 	}
 	Speaker(const Speaker& that) {
 		cout << "The copy constructor of the class Speaker is called" << endl;
@@ -45,7 +45,7 @@ public:
 		patronymic = that.patronymic;
 		organization = that.organization;
 		report = that.report;
-		abstract_report = that.abstract_report;
+		abstract = that.abstract;
 	}
 	~Speaker() {
 		cout << "The deconstructor of the class Speaker is called" << endl;
@@ -56,30 +56,28 @@ public:
 	void set_patronymic(const string& patronymic_) { patronymic = patronymic_; }
 	void set_organization(const string& organization_) { organization = organization_; }
 	void set_report(const string& report_) { report = report_; }
-	void set_abstract_report(const string& abstract_report_) {
-		abstract_report = abstract_report_;
-	}
+	void set_abstract(const string& abstract_) { abstract = abstract_; }
 
 	string get_last_name() const { return last_name; }
 	string get_first_name() const { return first_name; }
 	string get_patronymic() const { return patronymic; }
 	string get_organization() const { return organization; }
 	string get_report() const { return report; }
-	string get_abstract_report() const { return abstract_report; }
+	string get_abstract() const { return abstract; }
 
 	void create() {
-		cout << "Last name: ";
-		cin >> last_name;
-		cout << "First name: ";
-		cin >> first_name;
-		cout << "Patronymic: ";
-		cin >> patronymic;
+		cout << "Full name: ";
+		cin >> last_name >> first_name >> patronymic;
+		cin.ignore();
 		cout << "Organization: ";
-		cin >> organization;
+		getline(cin, organization);
+		trim(organization);
 		cout << "Report: ";
-		cin >> report;
-		cout << "Abstract report: ";
-		cin >> abstract_report;
+		getline(cin, report);
+		trim(report);
+		cout << "Abstract: ";
+		getline(cin, abstract);
+		trim(abstract);
 	}
 	void edit() {
 		print();
@@ -105,17 +103,17 @@ public:
 		else if (choice == items[3])
 			cin >> patronymic;
 		else if (choice == items[4])
-			cin >> organization;
+			getline(cin, organization), trim(organization);
 		else if (choice == items[5])
-			cin >> report;
+			getline(cin, report), trim(report);
 		else if (choice == items[6])
-			cin >> abstract_report;
+			getline(cin, abstract), trim(abstract);
 		print();
 		system("pause");
 	}
 	string print() {
-		return "Class: Speaker\nFull name: " + last_name + " " + first_name + " " + patronymic +
-			"\nReport: " + report + "\nAbstract report: " + abstract_report + "\n";
+		return "Class: Speaker\nFull-name: " + last_name + " " + first_name + " " + patronymic +
+			"\nReport: " + report + "\nAbstract: " + abstract + "\n";
 	}
 };
 

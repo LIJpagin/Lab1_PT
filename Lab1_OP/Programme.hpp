@@ -16,11 +16,11 @@ using std::string;
 class Programme : public Conference {
 private:
 	string name;
-	short day{ -1 };
-	short month{ -1 };
-	int year{ -1 };
-	short hour{ -1 };
-	short minute{ -1 };
+	short day{ 1 };
+	short month{ 1 };
+	int year{ 1900 };
+	short hour{ 0 };
+	short minute{ 0 };
 
 public:
 	Programme() {
@@ -70,17 +70,17 @@ public:
 
 	void create() {
 		cout << "Name: ";
-		cin >> name;
+		getline(cin, name), trim(name);
 		cout << "Day: ";
-		day = correct_input<unsigned short>(1, 31);
+		day = correct_input<short>(1, 31);
 		cout << "Month: ";
-		month = correct_input<unsigned short>(1, 12);
+		month = correct_input<short>(1, 12);
 		cout << "Year: ";
-		year = correct_input<unsigned int>(2000, 3000);
+		year = correct_input<int>(2000, 3000);
 		cout << "Hour: ";
-		hour = correct_input<unsigned short>(0, 23);
+		hour = correct_input<short>(0, 23);
 		cout << "Minute: ";
-		minute = correct_input<unsigned short>(0, 59);
+		minute = correct_input<short>(0, 59);
 	}
 	void edit() {
 		print();
@@ -100,7 +100,7 @@ public:
 		print();
 		cout << "Enter new value\n>>> ";
 		if (choice == items[1])
-			cin >> name;
+			getline(cin, name), trim(name);
 		else if (choice == items[2])
 			day = correct_input<unsigned short>(1, 31);
 		else if (choice == items[3])

@@ -45,9 +45,9 @@ void menu_create(Keeper& keeper) {
 	if (choice == items2[1])
 		keeper.add_begin(record);
 	else if (choice == items2[2]) {
-		cout << "Enter the record ID\n>>> ";
-		int choice = correct_input<int>(1, keeper.size() - 1);
-		keeper.insert(choice, record);
+		cout << "Enter the record index\n";
+		int index = correct_input<int>(1, keeper.size() - 1);
+		keeper.insert(index, record);
 	}
 	else if (choice == items2[3])
 		keeper.add_end(record);
@@ -60,14 +60,14 @@ void menu_show(Keeper& keeper) {
 	}
 	string items[] = {
 		"Select an action",
-		"Show record by ID",
+		"Show record by index",
 		"Show all records",
 		"Back" };
 	string choice = menu(items, 4);
 	system("cls");
 
 	if (choice == items[1]) {
-		cout << "Enter the record ID\n>>> ";
+		cout << "Enter the record index\n>>> ";
 		int index = correct_input<int>(0, keeper.size() - 1);
 		keeper.print(index);
 	}
@@ -85,14 +85,14 @@ void menu_del(Keeper& keeper) {
 	}
 	string items[] = {
 		"Select an action",
-		"Delete an record by ID",
+		"Delete an record by index",
 		"Delete all records",
 		"Back" };
 	string choice = menu(items, 4);
 	system("cls");
 
 	if (choice == items[1]) {
-		cout << "Enter the record index\n>>> ";
+		cout << "Enter the record index\n";
 		int index = correct_input<int>(1, keeper.size() - 1);
 		keeper.erase(index);
 	}
@@ -104,7 +104,10 @@ void menu_del(Keeper& keeper) {
 
 
 
+static int codepage_is_set = chcp(1251);
+
 int main() {
+	hide_cursor();
 	Keeper keeper;
 	while (true) {
 		string items[] = {
@@ -127,7 +130,7 @@ int main() {
 				system("pause");
 			}
 			else {
-				cout << "Enter the record index\n>>> ";
+				cout << "Enter the record index\n";
 				int index = correct_input<int>(0, keeper.size() - 1);
 				keeper.get(index)->edit();
 			}
