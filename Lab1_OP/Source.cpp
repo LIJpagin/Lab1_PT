@@ -68,8 +68,8 @@ void menu_show(Keeper& keeper) {
 
 	if (choice == items[1]) {
 		cout << "Enter the record ID\n>>> ";
-		int ID = correct_input<int>(0, keeper.size() - 1);
-		keeper.print(ID);
+		int index = correct_input<int>(0, keeper.size() - 1);
+		keeper.print(index);
 	}
 	else if (choice == items[2])
 		keeper.print();
@@ -92,9 +92,9 @@ void menu_del(Keeper& keeper) {
 	system("cls");
 
 	if (choice == items[1]) {
-		cout << "Enter the record ID\n>>> ";
-		int choice = correct_input<int>(1, keeper.size() - 1);
-		keeper.erase(choice);
+		cout << "Enter the record index\n>>> ";
+		int index = correct_input<int>(1, keeper.size() - 1);
+		keeper.erase(index);
 	}
 	else if (choice == items[2])
 		keeper.clear();
@@ -127,9 +127,9 @@ int main() {
 				system("pause");
 			}
 			else {
-				cout << "Enter the record ID\n>>> ";
-				int ID = correct_input<int>(0, keeper.size() - 1);
-				keeper.get(ID)->edit();
+				cout << "Enter the record index\n>>> ";
+				int index = correct_input<int>(0, keeper.size() - 1);
+				keeper.get(index)->edit();
 			}
 		}
 		else if (choice == items[3])
@@ -138,6 +138,7 @@ int main() {
 			cout << "Enter the path and/or name of the file to download\n";
 			string path; cin >> path;
 			keeper.load(path);
+			system("pause");
 		}
 		else if (choice == items[5]) {
 			if (keeper.is_empty()) {

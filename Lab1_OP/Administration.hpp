@@ -48,14 +48,10 @@ public:
 		cout << "The deconstructor of the class Administration is called" << endl;
 	}
 
-	void set_full_name(const string& last_name_, const string& first_name_, const string& patronymic_) {
-		last_name = last_name_;
-		first_name = first_name_;
-		patronymic = patronymic_;
-	}
-	void set_position(const string& position_) {
-		position = position_;
-	}
+	void set_last_name(const string& last_name_) { last_name = last_name_; }
+	void set_first_name(const string& first_name_) { first_name = first_name_; }
+	void set_patronymic(const string& patronymic_) { patronymic = patronymic_; }
+	void set_position(const string& position_) { position = position_; }
 	void set_area_responsibility(const string& area_responsibility_) {
 		area_responsibility = area_responsibility_;
 	}
@@ -68,16 +64,16 @@ public:
 
 	void create() {
 		string field;
-		cout << "Last name: "; cin >> field;
-		last_name = field;
-		cout << "First name: "; cin >> field;
-		first_name = field;
-		cout << "Patronymic: "; cin >> field;
-		patronymic = field;
-		cout << "Position: "; cin >> field;
-		position = field;
-		cout << "Area responsibility: "; cin >> field;
-		area_responsibility = field;
+		cout << "Last name: ";
+		cin >> last_name;
+		cout << "First name: ";
+		cin >> first_name;
+		cout << "Patronymic: ";
+		cin >> patronymic;
+		cout << "Position: ";
+		cin >> position;
+		cout << "Area responsibility: ";
+		cin >> area_responsibility;
 	}
 	void edit() {
 		print();
@@ -94,26 +90,22 @@ public:
 			return;
 		print();
 		cout << "Enter new value\n>>> ";
-		string value; cin >> value;
 		if (choice == items[1])
-			last_name = value;
+			cin >> last_name;
 		else if (choice == items[2])
-			first_name = value;
+			cin >> first_name;
 		else if (choice == items[3])
-			patronymic = value;
+			cin >> patronymic;
 		else if (choice == items[4])
-			position = value;
+			cin >> position;
 		else if (choice == items[5])
-			area_responsibility = value;
+			cin >> area_responsibility;
 		print();
 		system("pause");
 	}
 	string print() {
-		return "Class: Administration\nLast name: " + last_name +
-			"\nFirst name: " + first_name +
-			"\nPatronymic: " + patronymic +
-			"\nPosition: " + position +
-			"\nArea responsibility: " + area_responsibility + "\n";
+		return "Class: Administration\nFull name: " + last_name + " " + first_name + " " + patronymic +
+			"\nPosition: " + position + "\nArea responsibility: " + area_responsibility + "\n";
 	}
 };
 

@@ -51,16 +51,12 @@ public:
 		cout << "The deconstructor of the class Speaker is called" << endl;
 	}
 
-	void set_full_name(const string& last_name_, const string& first_name_, const string& patronymic_) {
-		last_name = last_name_;
-		first_name = first_name_;
-		patronymic = patronymic_;
-	}
-	void set_organization(const string& organization_) {
-		organization = organization_;
-	}
-	void set_report_and_abstract(const string& report_, const string& abstract_report_) {
-		report = report_;
+	void set_last_name(const string& last_name_) { last_name = last_name_; }
+	void set_first_name(const string& first_name_) { first_name = first_name_; }
+	void set_patronymic(const string& patronymic_) { patronymic = patronymic_; }
+	void set_organization(const string& organization_) { organization = organization_; }
+	void set_report(const string& report_) { report = report_; }
+	void set_abstract_report(const string& abstract_report_) {
 		abstract_report = abstract_report_;
 	}
 
@@ -72,19 +68,18 @@ public:
 	string get_abstract_report() const { return abstract_report; }
 
 	void create() {
-		string field;
-		cout << "Last name: "; cin >> field;
-		last_name = field;
-		cout << "First name: "; cin >> field;
-		first_name = field;
-		cout << "Patronymic: "; cin >> field;
-		patronymic = field;
-		cout << "Organization: "; cin >> field;
-		organization = field;
-		cout << "Report: "; cin >> field;
-		report = field;
-		cout << "Abstract report: "; cin >> field;
-		abstract_report = field;
+		cout << "Last name: ";
+		cin >> last_name;
+		cout << "First name: ";
+		cin >> first_name;
+		cout << "Patronymic: ";
+		cin >> patronymic;
+		cout << "Organization: ";
+		cin >> organization;
+		cout << "Report: ";
+		cin >> report;
+		cout << "Abstract report: ";
+		cin >> abstract_report;
 	}
 	void edit() {
 		print();
@@ -103,29 +98,24 @@ public:
 			return;
 		print();
 		cout << "Enter new value\n>>> ";
-		string value; cin >> value;
 		if (choice == items[1])
-			last_name = value;
+			cin >> last_name;
 		else if (choice == items[2])
-			first_name = value;
+			cin >> first_name;
 		else if (choice == items[3])
-			patronymic = value;
+			cin >> patronymic;
 		else if (choice == items[4])
-			organization = value;
+			cin >> organization;
 		else if (choice == items[5])
-			report = value;
+			cin >> report;
 		else if (choice == items[6])
-			abstract_report = value;
+			cin >> abstract_report;
 		print();
 		system("pause");
 	}
 	string print() {
-		return "Class: Speaker\nLast name: " + last_name +
-			"\nFirst name: " + first_name +
-			"\nPatronymic: " + patronymic +
-			"\nOrganization: " + organization +
-			"\nReport: " + report +
-			"\nAbstract report: " + abstract_report + "\n";
+		return "Class: Speaker\nFull name: " + last_name + " " + first_name + " " + patronymic +
+			"\nReport: " + report + "\nAbstract report: " + abstract_report + "\n";
 	}
 };
 

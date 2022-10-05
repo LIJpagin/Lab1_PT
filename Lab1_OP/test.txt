@@ -1,0 +1,38 @@
+    Class: Speaker       
+
+
+
+         Full name     :    1 2 3         
+   Report  : 5   
+JGJGg
+    
+Abstract report: 6
+
+
+780
+
+
+
+class:administration
+    full name:0 0 0
+    position:0
+    area responsibility:0
+
+
+
+             
+
+jhg
+
+
+
+CLASS : PROGRAMME
+  Name : 4
+  DATE : 04.04.2004
+  TIME : 04:44
+
+
+
+
+
+            

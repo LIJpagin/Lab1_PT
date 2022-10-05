@@ -106,7 +106,7 @@ public:
 		else if (choice == items[3])
 			month = correct_input<unsigned short>(1, 12);
 		else if (choice == items[4])
-			year = correct_input<unsigned int>(2000, 3000);
+			year = correct_input<unsigned int>(1900, 2100);
 		else if (choice == items[5])
 			hour = correct_input<unsigned short>(0, 23);
 		else if (choice == items[5])
@@ -116,12 +116,10 @@ public:
 	}
 	string print() {
 		return "Class: Programme\nName: " + name +
-			"\nDate: " +
-			(day < 10 ? "0" : "") + std::to_string(day) + "." +
+			"\nDate: " + (day < 10 ? "0" : "") + std::to_string(day) + "." +
 			(month < 10 ? "0" : "") + std::to_string(month) + "." +
 			std::to_string(year) + "\n" +
-			"Time: " +
-			(hour < 10 ? "0" : "") + std::to_string(hour) + "." +
+			"Time: " + (hour < 10 ? "0" : "") + std::to_string(hour) + ":" +
 			(minute < 10 ? "0" : "") + std::to_string(minute) + "\n";
 	}
 };
